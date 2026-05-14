@@ -41,8 +41,24 @@
     .no-print { display: none !important; }
     .page-break { page-break-before: always; }
     .card { border: 1px solid #ddd !important; background: #fafafa !important; }
-    :root { --gold: #A07820; --text: #111; --text-muted: #555; --surface: #fff; --surface2: #f5f5f5; --surface3: #eeeeee; }
-    header { background: #0A0A0A !important; }
+    :root {
+      --gold: #A07820;
+      --text: #111;
+      --text-muted: #444;
+      --surface: #fff;
+      --surface2: #f5f5f5;
+      --surface3: #eeeeee;
+    }
+    header {
+      background: #f8f8f8 !important;
+      border-bottom: 2px solid #A07820;
+    }
+    header::before { display: none !important; }
+    .brand-title { color: #111 !important; }
+    .brand-title span { color: #A07820 !important; }
+    .brand-sub { color: #555 !important; }
+    .brand-tag { color: #A07820 !important; }
+    .date-label, .date-val { color: #444 !important; }
   }
 
   /* ── LAYOUT ── */
@@ -341,6 +357,15 @@
   .contact-val a { color: var(--gold); text-decoration: none; }
   .contact-val a:hover { text-decoration: underline; }
 
+  /* ── QR SECTION ── */
+  .qr-section {
+    padding: 0 0 64px;
+    text-align: center;
+  }
+  .qr-section .section-label { margin-bottom: 4px; }
+  .qr-section h2 { margin-bottom: 8px; }
+  .qr-section p { margin-bottom: 24px; }
+
   /* ── PRINT BUTTON ── */
   .print-btn {
     position: fixed;
@@ -634,24 +659,36 @@
         <div class="alianza-label"><strong style="color:var(--text)">Equipo 100% propio</strong><br>Sin subcontratistas. Somos nosotros quienes llegamos y operamos, garantizando consistencia en cada evento.</div>
       </div>
       <div class="alianza-item">
-        <div class="alianza-label"><strong style="color:var(--text)">Pago directo al proveedor</strong><br>El cliente paga la producción directamente a Constantino Eventos. El jardín cobra sus propios servicios sin intermediación.</div>
+        <div class="alianza-num">04</div>
+        <div class="alianza-label"><strong style="color:var(--text)">Pago directo al proveedor</strong><br>El cliente paga el servicio directamente a Jardín Bambú.</div>
       </div>
       <div class="alianza-item">
+        <div class="alianza-num">05</div>
         <div class="alianza-label"><strong style="color:var(--text)">Contenido para redes</strong><br>Compartimos fotos y videos de cada evento que pueden usarse en las redes de Jardín Bambú para atraer más clientes.</div>
       </div>
       <div class="alianza-item">
+        <div class="alianza-num">06</div>
         <div class="alianza-label"><strong style="color:var(--text)">Flexibilidad total</strong><br>La alianza no es exclusiva. Sin contratos de permanencia. Si en algún evento necesitan algo diferente, lo coordinamos.</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ── SECCIÓN QR ── -->
+<section class="qr-section no-print">
+  <div class="container">
+    <div class="divider-gold"></div>
+    <div class="section-label">Comparte esta propuesta</div>
+    <h2>Escanea para verla en tu celular</h2>
+    <p>O comparte el link directamente</p>
+    <div id="qrcode" style="display: inline-block; background: white; padding: 16px; border-radius: 12px;"></div>
+    <p style="margin-top: 16px; font-size: 12px; color: var(--text-dim); word-break: break-all;" id="pageUrl"></p>
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <footer class="contacto">
   <div class="container">
-    <div class="section-label">Siguientes pasos</div>
-    <h2>¿Listo para arrancar?</h2>
-    <p>Podemos agendar una visita al jardín para calibrar el equipo al espacio, o cerrar el primer evento directamente. Sin contratos de por medio.</p>
 
     <div class="contact-grid">
       <div class="contact-item">
@@ -665,7 +702,7 @@
     </div>
 
     <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05);">
-      <p style="font-size:12px; color: var(--text-dim); text-align:center;">Propuesta válida por 60 días a partir de la fecha de emisión. Precios en pesos mexicanos e incluyen IVA. Sujeto a disponibilidad de fechas.</p>
+      <p style="font-size:12px; color: var(--text-dim); text-align:center;">Propuesta válida por todo el año 2026. Precios en pesos mexicanos sin IVA. Sujeto a disponibilidad de fechas.</p>
     </div>
   </div>
 </footer>
@@ -675,6 +712,21 @@
   <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
   Guardar / Imprimir PDF
 </button>
+
+<!-- Librería QR -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+  const pageUrl = window.location.href;
+  document.getElementById('pageUrl').textContent = pageUrl;
+  new QRCode(document.getElementById("qrcode"), {
+    text: pageUrl,
+    width: 200,
+    height: 200,
+    colorDark: "#0A0A0A",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
 
 </body>
 </html>
