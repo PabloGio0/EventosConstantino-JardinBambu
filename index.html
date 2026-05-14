@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta de Alianza — Jardín Bambú × Constantino Eventos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-border: rgba(201,168,76,0.25);
+    --black: #0A0A0A;
+    --surface: #111111;
+    --surface2: #181818;
+    --surface3: #1E1E1E;
+    --text: #F0EDE8;
+    --text-muted: #8A8680;
+    --text-dim: #5A5650;
+    --green: #4CAF7D;
+    --green-dim: rgba(76,175,125,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; color: #111; font-size: 12px; }
+    .no-print { display: none !important; }
+    .page-break { page-break-before: always; }
+    .card { border: 1px solid #ddd !important; background: #fafafa !important; }
+    :root { --gold: #A07820; --text: #111; --text-muted: #555; --surface: #fff; --surface2: #f5f5f5; --surface3: #eeeeee; }
+    header { background: #0A0A0A !important; }
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--black);
+    border-bottom: 1px solid var(--gold-border);
+    padding: 48px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 200px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .brand-col {}
+  .brand-tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .brand-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+  }
+  .brand-title span { color: var(--gold); font-style: italic; }
+  .brand-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  .date-col { text-align: right; }
+  .date-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+  .date-val { font-size: 14px; color: var(--text-muted); margin-top: 2px; }
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+    margin: 40px 0;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  p { color: var(--text-muted); font-size: 14px; line-height: 1.75; }
+
+  /* ── INTRO ── */
+  .intro { padding: 56px 0 48px; }
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .intro-card {
+    background: var(--surface2);
+    border: 1px solid var(--gold-border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .intro-card .ic-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .intro-card .ic-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--text);
+  }
+
+  /* ── PAQUETES ── */
+  .paquetes { padding: 0 0 56px; }
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .pkg-card {
+    background: var(--surface2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pkg-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+  }
+  .pkg-card.featured {
+    border-color: var(--gold-border);
+    background: var(--surface3);
+  }
+  .pkg-card.featured::before {
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.6;
+  }
+  .pkg-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .pkg-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .pkg-badge {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-rec { background: var(--gold-dim); color: var(--gold-light); border: 1px solid var(--gold-border); }
+  .badge-new { background: var(--green-dim); color: var(--green); border: 1px solid rgba(76,175,125,0.2); }
+  .pkg-capacity { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .pkg-price-row { display: flex; align-items: baseline; gap: 10px; }
+  .pkg-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .pkg-price-normal {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: line-through;
+  }
+  .pkg-price-note { font-size: 11px; color: var(--green); font-weight: 500; }
+  .pkg-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+  .includes-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .includes-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .includes-list li {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .includes-list li::before {
+    content: '✓';
+    color: var(--gold);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .upsells-section {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 14px;
+  }
+  .upsell-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-dim);
+    padding: 3px 0;
+  }
+  .upsell-price { color: var(--text-muted); }
+
+  /* ── DESCUENTO ── */
+  .descuento {
+    background: var(--surface2);
+    border: 1px solid var(--gold-border);
+    border-radius: 14px;
+    padding: 32px;
+    margin: 0 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .descuento::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .descuento-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .descuento-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .descuento-tag {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  /* ── ALIANZA ── */
+  .alianza { padding: 0 0 56px; }
+  .alianza-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .alianza-item {
+    background: var(--surface2);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .alianza-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .alianza-label { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── CONTACTO ── */
+  .contacto {
+    border-top: 1px solid var(--gold-border);
+    padding: 48px 0;
+    text-align: center;
+  }
+  .contacto p { max-width: 480px; margin: 12px auto 0; }
+  .contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .contact-item { text-align: center; }
+  .contact-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .contact-val { font-size: 14px; color: var(--text); font-weight: 500; }
+  .contact-val a { color: var(--gold); text-decoration: none; }
+  .contact-val a:hover { text-decoration: underline; }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    border-radius: 40px;
+    padding: 12px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 24px rgba(201,168,76,0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 100;
+  }
+  .print-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.35); }
+
+  @media (max-width: 640px) {
+    .pkg-grid { grid-template-columns: 1fr; }
+    .alianza-grid { grid-template-columns: 1fr 1fr; }
+    .intro-grid { grid-template-columns: 1fr; }
+    .descuento-grid { grid-template-columns: 1fr; }
+    .brand-title { font-size: 26px; }
+    .date-col { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="brand-col">
+        <div class="brand-tag">Propuesta de alianza comercial</div>
+        <div class="brand-title">Jardín Bambú <span>&</span><br>Eventos Constantino</div>
+        <div class="brand-sub">Producción de audio, iluminación y DJ profesional para tus eventos</div>
+      </div>
+      <div class="date-col">
+        <div class="date-label">Fecha</div>
+        <div class="date-val">Mayo 2026</div>
+        <div style="margin-top:12px;">
+          <div class="date-label">Válida por</div>
+          <div class="date-val">Todo el año 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="section-label">Presentación</div>
+    <h2>Una alianza pensada para hacer crecer tu jardín</h2>
+    <p>Somos Eventos & Producciones Constantino, empresa especializada en producción técnica integral para eventos sociales en CDMX con más de 10 años de experiencia. Contamos con equipo de audio profesional, iluminación arquitectónica y de pista, y DJ en vivo en todos nuestros paquetes.</p>
+    <p style="margin-top:10px;">La propuesta es simple: tú nos recomiendas a tus clientes, nosotros les ofrecemos producción de primer nivel a precios exclusivos para Jardín Bambú, y juntos construimos una reputación que atrae más reservaciones para los dos.</p>
+
+    <div class="intro-grid">
+      <div class="intro-card">
+        <div class="ic-label">Nuestra especialidad</div>
+        <div class="ic-val">XV años · Cumpleaños · Eventos sociales</div>
+      </div>
+      <div class="intro-card">
+        <div class="ic-label">Experiencia</div>
+        <div class="ic-val">+10 años · +100 eventos realizados</div>
+      </div>
+      <div class="intro-card">
+        <div class="ic-label">Equipo</div>
+        <div class="ic-val">100% propio — sin intermediarios</div>
+      </div>
+      <div class="intro-card">
+        <div class="ic-label">Área de servicio</div>
+        <div class="ic-val">CDMX y área metropolitana</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section class="paquetes">
+  <div class="container">
+    <div class="section-label">Catálogo exclusivo para Jardín Bambú</div>
+    <h2>Cuatro paquetes para cada tipo de evento</h2>
+    <p>Todos los paquetes incluyen DJ profesional, operador técnico, montaje y desmontaje. Precios especiales aplicables únicamente a eventos realizados en Jardín Bambú.</p>
+
+    <div class="pkg-grid">
+
+      <!-- BÁSICO -->
+      <div class="pkg-card">
+        <div class="pkg-header">
+          <div>
+            <div class="pkg-name">Solo Sonido</div>
+            <div class="pkg-capacity">30 – 60 personas</div>
+          </div>
+          <span class="pkg-badge badge-new">Accesible</span>
+        </div>
+        <div>
+          <div class="pkg-price-row">
+            <div class="pkg-price">$2,900</div>
+            <div>
+              <div class="pkg-price-normal">$3,500</div>
+              <div class="pkg-price-note">primeros 5 eventos</div>
+            </div>
+          </div>
+        </div>
+        <div class="pkg-desc">Sonido profesional con bajos controlados. Ideal para cumpleaños, bautizos o eventos donde el baile no es el centro.</div>
+        <div>
+          <div class="includes-label">Incluye</div>
+          <ul class="includes-list">
+            <li>2 bocinas EV ZLX G2</li>
+            <li>1 subwoofer FBT</li>
+            <li>DJ profesional en vivo</li>
+            <li>1 micrófono inalámbrico</li>
+            <li>Operador técnico</li>
+            <li>Montaje y desmontaje</li>
+          </ul>
+        </div>
+        <div class="upsells-section">
+          <div class="includes-label">Opcionales</div>
+          <div class="upsell-row"><span>Iluminación básica (6 parleds)</span><span class="upsell-price">+$800</span></div>
+          <div class="upsell-row"><span>Cabina sencilla</span><span class="upsell-price">+$500</span></div>
+          <div class="upsell-row"><span>Karaoke</span><span class="upsell-price">+$500</span></div>
+        </div>
+      </div>
+
+      <!-- ESENCIAL -->
+      <div class="pkg-card">
+        <div class="pkg-header">
+          <div>
+            <div class="pkg-name">Esencial</div>
+            <div class="pkg-capacity">40 – 80 personas</div>
+          </div>
+          <span class="pkg-badge badge-new">Popular</span>
+        </div>
+        <div>
+          <div class="pkg-price-row">
+            <div class="pkg-price">$4,900</div>
+            <div>
+              <div class="pkg-price-normal">$5,500</div>
+              <div class="pkg-price-note">primeros 5 eventos</div>
+            </div>
+          </div>
+        </div>
+        <div class="pkg-desc">Sonido + iluminación ambiental y DJ. El paquete más solicitado para cumpleaños de adultos en jardín.</div>
+        <div>
+          <div class="includes-label">Incluye</div>
+          <ul class="includes-list">
+            <li>2 bocinas EV ZLX G2 + 2 subwoofers FBT</li>
+            <li>6 parleds (iluminación ambiental)</li>
+            <li>Cabina sencilla</li>
+            <li>DJ profesional en vivo</li>
+            <li>1 micrófono inalámbrico</li>
+            <li>Operador técnico</li>
+          </ul>
+        </div>
+        <div class="upsells-section">
+          <div class="includes-label">Opcionales</div>
+          <div class="upsell-row"><span>2 cabezas móviles BEAM 7R</span><span class="upsell-price">+$1,200</span></div>
+          <div class="upsell-row"><span>Cabina iluminada (upgrade)</span><span class="upsell-price">+$800</span></div>
+          <div class="upsell-row"><span>Karaoke</span><span class="upsell-price">+$500</span></div>
+        </div>
+      </div>
+
+      <!-- PLUS (FEATURED) -->
+      <div class="pkg-card featured">
+        <div class="pkg-header">
+          <div>
+            <div class="pkg-name">Plus — Producción completa</div>
+            <div class="pkg-capacity">80 – 120 personas</div>
+          </div>
+          <span class="pkg-badge badge-rec">Recomendado</span>
+        </div>
+        <div>
+          <div class="pkg-price-row">
+            <div class="pkg-price">$7,900</div>
+            <div>
+              <div class="pkg-price-normal">$8,500</div>
+              <div class="pkg-price-note">primeros 5 eventos</div>
+            </div>
+          </div>
+        </div>
+        <div class="pkg-desc">Line array Elipsis completo, BEAM 7R, pixel strobe, cabina iluminada y DJ. El estándar para XV años en el jardín.</div>
+        <div>
+          <div class="includes-label">Incluye</div>
+          <ul class="includes-list">
+            <li>Line array Elipsis (4 VA-206 + 2 VAB-118A)</li>
+            <li>4 cabezas móviles BEAM 7R</li>
+            <li>4 pixel strobe 1048</li>
+            <li>6 parleds (iluminación arquitectónica)</li>
+            <li>Cabina iluminada personalizada</li>
+            <li>DJ profesional en vivo</li>
+            <li>2 micrófonos inalámbricos</li>
+            <li>Técnico de iluminación</li>
+          </ul>
+        </div>
+        <div class="upsells-section">
+          <div class="includes-label">Opcionales</div>
+          <div class="upsell-row"><span>Rayos láser 3W (×2)</span><span class="upsell-price">+$1,500</span></div>
+          <div class="upsell-row"><span>Máquina de humo</span><span class="upsell-price">+$600</span></div>
+          <div class="upsell-row"><span>Karaoke</span><span class="upsell-price">+$500</span></div>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="pkg-card">
+        <div class="pkg-header">
+          <div>
+            <div class="pkg-name">Premium — Show completo</div>
+            <div class="pkg-capacity">100 – 300 personas</div>
+          </div>
+          <span class="pkg-badge badge-rec">Show total</span>
+        </div>
+        <div>
+          <div class="pkg-price-row">
+            <div class="pkg-price">$10,900</div>
+            <div>
+              <div class="pkg-price-normal">$11,500</div>
+              <div class="pkg-price-note">primeros 5 eventos</div>
+            </div>
+          </div>
+        </div>
+        <div class="pkg-desc">Todo el equipo disponible. Láseres, humo, iluminación arquitectónica del jardín y técnico de iluminación dedicado.</div>
+        <div>
+          <div class="includes-label">Todo lo del Plus, más</div>
+          <ul class="includes-list">
+            <li>2 rayos láser 3W</li>
+            <li>Iluminación arquitectónica del jardín</li>
+            <li>Máquina de humo</li>
+            <li>Control DMX Chamsys</li>
+            <li>Cabina iluminada premium</li>
+            <li>3 micrófonos inalámbricos</li>
+            <li>Técnico de iluminación dedicado</li>
+          </ul>
+        </div>
+        <div class="upsells-section">
+          <div class="includes-label">Opcionales</div>
+          <div class="upsell-row"><span>Pista de baile LED 3×3</span><span class="upsell-price">+$2,500</span></div>
+          <div class="upsell-row"><span>Karaoke premium</span><span class="upsell-price">+$500</span></div>
+          <div class="upsell-row"><span>Pantalla LED / video mapping</span><span class="upsell-price">Cotización</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESCUENTO -->
+<div class="container">
+  <div class="descuento">
+    <div class="descuento-grid">
+      <div>
+        <div class="section-label">Promoción de lanzamiento</div>
+        <h2 style="margin-bottom:10px;">$600 de descuento en los primeros 5 eventos</h2>
+        <p>Para que Jardín Bambú pueda conocer nuestra calidad de trabajo sin riesgo, aplicamos un descuento de $600 pesos sobre el precio regular en los primeros cinco eventos que se cierren a través de esta alianza. Los precios tachados en cada paquete reflejan este beneficio.</p>
+        <p style="margin-top:10px; font-size:12px; color: var(--text-dim);">El descuento aplica sobre el paquete base. Después del 5to evento, se aplican los precios de lista indicados.</p>
+      </div>
+      <div style="text-align:center; min-width: 120px;">
+        <div class="descuento-tag">Descuento</div>
+        <div class="descuento-amount">$600</div>
+        <div style="font-size:12px; color:var(--text-dim); margin-top:4px;">× 5 eventos</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALIANZA -->
+<section class="alianza">
+  <div class="container">
+    <div class="divider-gold"></div>
+    <div class="section-label">Términos de la alianza</div>
+    <h2>Cómo funciona la colaboración</h2>
+    <p>El modelo es claro y sin complicaciones: nosotros llegamos, instalamos, operamos y retiramos. Tú te enfocas en tu jardín y tus clientes.</p>
+
+    <div class="alianza-grid">
+      <div class="alianza-item">
+        <div class="alianza-num">01</div>
+        <div class="alianza-label"><strong style="color:var(--text)">Precio fijo por evento</strong><br>Sin cobro por horas extras. Las horas adicionales las administra y cobra el jardín directamente al cliente.</div>
+      </div>
+      <div class="alianza-item">
+        <div class="alianza-num">02</div>
+        <div class="alianza-label"><strong style="color:var(--text)">Recomendación activa</strong><br>Jardín Bambú nos incluye como proveedor recomendado en su catálogo, cotizaciones y comunicación con clientes.</div>
+      </div>
+      <div class="alianza-item">
+        <div class="alianza-num">03</div>
+        <div class="alianza-label"><strong style="color:var(--text)">Equipo 100% propio</strong><br>Sin subcontratistas. Somos nosotros quienes llegamos y operamos, garantizando consistencia en cada evento.</div>
+      </div>
+      <div class="alianza-item">
+        <div class="alianza-label"><strong style="color:var(--text)">Pago directo al proveedor</strong><br>El cliente paga la producción directamente a Constantino Eventos. El jardín cobra sus propios servicios sin intermediación.</div>
+      </div>
+      <div class="alianza-item">
+        <div class="alianza-label"><strong style="color:var(--text)">Contenido para redes</strong><br>Compartimos fotos y videos de cada evento que pueden usarse en las redes de Jardín Bambú para atraer más clientes.</div>
+      </div>
+      <div class="alianza-item">
+        <div class="alianza-label"><strong style="color:var(--text)">Flexibilidad total</strong><br>La alianza no es exclusiva. Sin contratos de permanencia. Si en algún evento necesitan algo diferente, lo coordinamos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<footer class="contacto">
+  <div class="container">
+    <div class="section-label">Siguientes pasos</div>
+    <h2>¿Listo para arrancar?</h2>
+    <p>Podemos agendar una visita al jardín para calibrar el equipo al espacio, o cerrar el primer evento directamente. Sin contratos de por medio.</p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label">WhatsApp</div>
+        <div class="contact-val"><a href="https://wa.me/525581657250">55 8165 7250</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Instagram</div>
+        <div class="contact-val"><a href="#">@constantino.eventos</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Zona de servicio</div>
+        <div class="contact-val">CDMX · Iztapalapa y alrededores</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05);">
+      <p style="font-size:12px; color: var(--text-dim); text-align:center;">Propuesta válida por 60 días a partir de la fecha de emisión. Precios en pesos mexicanos e incluyen IVA. Sujeto a disponibilidad de fechas.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- PRINT BUTTON -->
+<button class="print-btn no-print" onclick="window.print()">
+  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+  Guardar / Imprimir PDF
+</button>
+
+</body>
+</html>
